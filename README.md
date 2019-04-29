@@ -14,7 +14,7 @@ For training a robust model with Guided Complement Entropy. (alpha as the streng
 
 	python main.py --GCE --alpha 0.333 
 
-For testing the robustness to PGD adversarial training on the previous training model.
+For testing the robustness to PGD adversarial attacks on the previous training model.
 
 	python LinfPGDAttack.py --GCE --model <model path>
 	
