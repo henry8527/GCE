@@ -21,8 +21,9 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--GCE', action='store_true',
                     help='Using GuidedComplementEntropy as a loss function for crafting adversarial examples')
 parser.add_argument('--alpha', '-a', default=0.333, type=float,
-                    help='alpha for guiding factor') 
-parser.add_argument('--model', default='default', type=str, help='load a training model from your (physical) path')
+                    help='alpha for guiding factor')
+parser.add_argument('--model', default='default', type=str,
+                    help='load a training model from your (physical) path')
 parser.add_argument('--batch-size', '-b', default=64,
                     type=int, help='mini-batch size (default: 64)')
 parser.add_argument('--eps', '-e', default=0.3, type=float,
@@ -55,10 +56,10 @@ transform_test = transforms.Compose([
 #                                         download=False, transform=transform_train)
 # trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,
 #                                           shuffle=True, num_workers=2)
-          
-        
+
+
 testset = torchvision.datasets.MNIST(root='./data', train=False,
-                                       download=False, transform=transform_test)
+                                     download=False, transform=transform_test)
 testloader = torch.utils.data.DataLoader(testset, batch_size=1000,
                                          shuffle=False, num_workers=2)
 
@@ -94,4 +95,4 @@ for step, data in enumerate(testloader, 0):
     correct += predicted.eq(labels.data).cpu().sum()
     correct = correct.item()
 
-print("Classification accuracy : {}%".format(100.*correct/total))
+print("Classification accuracy : {}%".format(100. * correct / total))

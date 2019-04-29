@@ -19,7 +19,8 @@ from GCE import *
 from utils import *
 
 
-parser = argparse.ArgumentParser(description='PyTorch training using GuidedComplementEntropy')
+parser = argparse.ArgumentParser(
+    description='PyTorch training using GuidedComplementEntropy')
 parser.add_argument('--GCE', action='store_true',
                     help='Using GuidedComplementEntropy')
 parser.add_argument('--alpha', '-a', default=0.333, type=float,
@@ -107,14 +108,16 @@ if use_cuda:
 
 
 if args.GCE:
-  criterion = GuidedComplementEntropy(args.alpha)
-  optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.99))
+    criterion = GuidedComplementEntropy(args.alpha)
+    optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.99))
 
 else:
-  criterion = nn.CrossEntropyLoss()
-  optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.99))
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.99))
 
 # Training
+
+
 def train(epoch):
     print('\nEpoch: %d' % epoch)
     net.train()
@@ -128,7 +131,7 @@ def train(epoch):
         # Baseline Implementation
         inputs, targets = Variable(inputs), Variable(targets)
         outputs = net(inputs)
-        loss = criterion(outputs, targets)   	
+        loss = criterion(outputs, targets)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -141,7 +144,6 @@ def train(epoch):
 
         progress_bar(batch_idx, len(trainloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
                      % (train_loss / (batch_idx + 1), 100. * correct / total, correct, total))
-
 
     return (train_loss / batch_idx, 100. * correct / total)
 
@@ -174,6 +176,7 @@ def test(epoch):
         best_acc = acc
         checkpoint(acc, epoch)
     return (test_loss / batch_idx, 100. * correct / total)
+
 
 def checkpoint(acc, epoch):
     # Save checkpoint.
