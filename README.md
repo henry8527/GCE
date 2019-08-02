@@ -17,9 +17,9 @@ We demonstrate model accuracies trained with different training objective: Basel
 
 | Attack              | Baseline  | GCE |
 |:-------------------|:---------------------|:---------------------|
-| [FGSM (Goodfellow et al. 2015)] [1]               |               38.88%  |               62.74%  |
+| [FGSM (Goodfellow et al. 2015)][1]               |               38.88%  |               62.74%  |
 | [MIM (Dong et al. 2018)][2]                |               2.29%  |               39.81%  |
-| [PGD (Madry et al. 2018)] [3]                |               1.58%  |               9.55%  |
+| [PGD (Madry et al. 2018)][3]                |               1.58%  |               9.55%  |
 
 [1]: https://arxiv.org/abs/1412.6572
 [2]: https://arxiv.org/abs/1710.06081
